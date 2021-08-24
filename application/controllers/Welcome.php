@@ -20,7 +20,34 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$data=array();
+		$data['vue']='product-list.php';
+		$data['title']='Liste produits';
+		$this->load->view('front/template',$data);
+		
+	}	
+	public function cart()
+	{
+		$data=array();
+		$data['vue']='cart.php';
+		$data['title']='Panier';
+		$this->load->view('front/template',$data);
+		
+	}	
+	public function admin()
+	{
 		$this->load->view('index');
 		
-	}		
+	}	
+	public function test()
+	{
+		$this->load->view('test/test');
+		
+	}
+	// changer caisse
+	// public function index()
+	// {
+	// 	$this->load->view('index');
+		
+	// }		
 }
