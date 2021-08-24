@@ -23,6 +23,9 @@ class Welcome extends CI_Controller {
 		$data=array();
 		$data['vue']='product-list.php';
 		$data['title']='Liste produits';
+		$this->load->model('All_model');
+		$data['allProduit']=$this->All_model->getProduit();
+		$data['allCategory']=$this->All_model->getCategory();
 		$this->load->view('front/template',$data);
 		
 	}	
