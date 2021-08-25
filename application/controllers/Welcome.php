@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Welcome extends CI_Controller {
+include('BaseController.php');
+class Welcome extends BaseController {
 
 	/**
 	 * Index Page for this controller.
@@ -21,6 +21,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data=array();
+		$data['idCaisse']=$this->session->userdata('idCaisse');
 		$data['vue']='product-list.php';
 		$data['title']='Liste produits';
 		$this->load->model('All_model');
@@ -30,23 +31,32 @@ class Welcome extends CI_Controller {
 		
 	}	
 	public function cart()
-	{
+	{		
+
+		$this->load->model('Produit');
+		$this->load->model('DetailsAchat');
+	
+		$caisse=$this->session->userdata('idCaisse');
+		$dt=$this->DetailsAchat->listeAchat($caisse);
+		$total=$this->DetailsAchat->getTotalParCaisse($caisse);
+		$produit=$this->Produit->listeProduit();
+
 		$data=array();
+		$data['idCaisse']=$caisse;
+		$data['achat']=$dt;
+		$data['produit']=$produit;
+		$data['total']=$total;
 		$data['vue']='cart.php';
+
 		$data['title']='Panier';
 		$this->load->view('front/template',$data);
-		
+
 	}	
 	public function admin()
 	{
 		$this->load->view('index');
 		
 	}	
-	public function test()
-	{
-		$this->load->view('test/test');
-		
-	}
 	// changer caisse
 	// public function index()
 	// {

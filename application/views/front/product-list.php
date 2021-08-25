@@ -7,23 +7,19 @@
                     <div class="col-md-12">
                         <div class="product-view-top">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="product-search">
-                                        <input type="email" placeholder="Search">
-                                        <button><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="product-short">
-                                        <div class="dropdown">
-                                            <div class="dropdown-toggle" data-toggle="dropdown">Category</div>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <?php foreach($allCategory->result_array() as $row) { ?>
-                                                    <a href="#" class="dropdown-item"><?php echo $row['nomCateg']; ?></a>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-md-12">
+                                    <nav class="navbar bg-light">
+                                        <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">Tout</a>
+                                                </li>
+                                            <?php foreach($allCategory->result_array() as $row) { ?>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#"><?php echo $row['nomCateg']; ?></a>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
+                                    </nav>
                                 </div>
                                 <!-- <div class="col-md-4">
                                     <div class="product-price-range">
@@ -51,7 +47,7 @@
                         <div class="col-md-4">
                             <div class="product-item">
                                 <div class="product-title">
-                                    <a href="#"><?php echo $row['nomProduit'];?></a>
+                                    <?php echo $row['nomProduit'];?>
                                 </div>
                                 <div class="product-image">
                                     <!-- <a href="product-detail.html"> -->
@@ -59,8 +55,28 @@
                                     <!-- </a> -->
                                 </div>
                                 <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Ajouter</a>
+                                    <form method="post" action="<?php echo site_url("achat/insertAchat") ?>">
+                                        <input type="hidden" name="idProd" value="<?php echo $row['idProduit']?>">
+                                        <h3><span>Ar</span> <?php echo $row['prix'];?></h3>
+                                        <div class="qty">
+                                            <a class="btn-plus" href="#!" onclick="add(<?php echo $row['idProduit']?>)"><i class="fa fa-plus"></i></a>
+                                            <br/>
+                                            <input type="number" id="qt<?php echo $row['idProduit']?>" min="1" name="qtty" value="1">
+                                            <br/>
+                                            <a class="btn-minus" href="#!" onclick="minus(<?php echo $row['idProduit']?>)"><i class="fa fa-minus"></i></a>
+                                        </div>
+                                        <br/>
+                                        <input class="btn" type="submit" value="ajouter">
+                                        <br/>
+                                    </form>
+                                    <script>
+                                        function add(id){
+                                            var test=document.getElementById("qt"+id).value;
+                                            var testInt=parseInt(test);
+                                            testInt=testInt+1;
+                                            document.getElementById("qt"+id).value=testInt;
+                                        }    
+                                    </script>
                                 </div>
                             </div>
                         </div>

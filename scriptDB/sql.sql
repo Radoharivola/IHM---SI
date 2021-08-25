@@ -39,13 +39,18 @@ create table admin(
 create table Achat(
     idAchat int not null AUTO_INCREMENT PRIMARY KEY,
     idProduit int not null,
-    idUser int not null,
     idCaisse int not null,
     quantity int not null,
+    valide int not null,
+    dateAjout date not null,
     foreign key(idProduit) references Produit(idProduit),
-    foreign key(idUser) references User(idUser),
     foreign key(idCaisse) references Caisse(idCaisse)
 );
+
+drop table Achat;
+
+create view cart as select achat.idProduit,prix,nomProduit,sum(quantity) as quantity,(sum(quantity)*Produit.prix) as montant,idCaisse from Achat join produit on produit.idProduit=achat.idProduit where valide=0 group by idCaisse,produit.idProduit;
+create view totalCart as select idCaisse,sum(montant) as montant from cart group by idCaisse;
 
 insert into Produit values(null,'sel','sel.jpg',200);
 insert into Produit values(null,'bob','bob.jpg',300);

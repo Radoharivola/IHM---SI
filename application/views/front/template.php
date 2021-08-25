@@ -24,6 +24,7 @@
     </head>
 
     <body>
+        
         <!-- Top bar Start -->
         <!-- Top bar End -->
         
@@ -45,8 +46,11 @@
                             
                             <!-- <a href="<?php echo site_url("welcome/change") ?>" class="nav-item nav-link">changer de caisse</a> -->
 
-                            <a href="#!" class="nav-item nav-link">changer de caisse</a>
-                        </div>
+                            <a href="<?php echo site_url("accueil/deco") ?>" class="nav-item nav-link">changer de caisse</a>
+                            <?php if (isset($idCaisse)){ ?>
+                                <a href="#!" class="nav-item nav-link">Caisse actuelle: N°<?php echo $idCaisse; ?></a>
+                            <?php } ?>
+                            </div>
                         <div class="navbar-nav ml-auto">
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Admin</a>
@@ -65,12 +69,11 @@
         
         <!-- Bottom Bar End -->       
         
-           
         <?php include($vue); ?>
         
         
         <!-- Footer Bottom Start -->
-        <div class="footer-bottom">
+        <!-- <div class="footer-bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 copyright">
@@ -82,7 +85,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Footer Bottom End -->       
         
         <!-- Back to Top -->

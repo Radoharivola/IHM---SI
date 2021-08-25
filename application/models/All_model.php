@@ -10,11 +10,4 @@ class All_model extends CI_Model{
     public function getCategory(){
         return $this->db->query("SELECT*from category");
     }
-    // public function findProduitByName($nom){
-    //     $query=$this->db->query("SELECT*from produit where nomProduit='$nom' limit 1");
-    //     return $query->row_array();
-    // }
-    // public function insertAchat($numCaisse,$idProduit,$qtt){
-    //     $this->db->query("INSERT INTO achat VALUES(null,'$numCaisse','$idProduit','$qtt','0')");
-    // }
 }
