@@ -74,6 +74,28 @@ insert into category values(null,'Electronique');
 insert into category values(null,'Electroménager');
 insert into category values(null,'PPN');
 
+insert into categoryProduit values(3,1);
+insert into categoryProduit values(3,2);
+insert into categoryProduit values(3,3);
+insert into categoryProduit values(3,4);
+insert into categoryProduit values(3,5);
+
+insert into categoryProduit values(2,6);
+insert into categoryProduit values(2,7);
+insert into categoryProduit values(2,8);
+insert into categoryProduit values(2,9);
+insert into categoryProduit values(2,10);
+
+insert into categoryProduit values(1,11);
+insert into categoryProduit values(1,12);
+insert into categoryProduit values(1,13);
+insert into categoryProduit values(1,14);
+insert into categoryProduit values(1,15);
+
+delete from categoryProduit;
+
+create view produitWithCategory as select produit.idProduit,nomProduit,imagePath,prix,nomCateg from categoryProduit join produit on categoryProduit.idProduit=produit.idProduit join category on category.idcateg=categoryProduit.idcateg;
+
 insert into caisse values(null,'1');
 insert into caisse values(null,'2');
 insert into caisse values(null,'3');
