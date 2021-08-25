@@ -49,7 +49,15 @@ if ( ! function_exists('getControllerUrl')) {
         return base_url()."mainController/$function/$arg";
     }
 }
-
+if ( ! function_exists('getControllerUrlAdmin')) {
+    function getControllerUrlAdmin($function,$arg) 
+    {
+        if($arg==null){
+            return base_url()."adminlogin/$function";
+        }
+        return base_url()."adminlogin/$function/$arg";
+    }
+}
 if ( ! function_exists('getUploadControllerUrl')) {
     function getUploadControllerUrl($function,$arg) 
     {

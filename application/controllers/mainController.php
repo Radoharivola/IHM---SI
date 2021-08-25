@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class mainController extends CI_Controller {
+include('BaseControllerAdmin.php');
+class mainController extends BaseControllerAdmin {
 
 	/**
 	 * Index Page for this controller.
@@ -83,7 +83,11 @@ class mainController extends CI_Controller {
 		$this->load->helper('mainHelper_helper');
 		$query=$this->mainModel_model->authentification($email,$mdp);
 		if($query['nom'] !=null and $query['passwd']!=null){
+			$this->session->set_userdata('user',$query['nom']);
 			$this->load->view('Dashboard/template',$data);
+		}else{
+			$data['error']="error";
+			$this->load->view('Dashboard/login',$data);
 		}
 	}
 

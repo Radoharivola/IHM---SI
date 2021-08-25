@@ -39,10 +39,13 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
+                                        <?php if(isset($error)){ ?>
+                                            <h2 style="color:red">Erreur lors de la connexion</h2>    
+                                        <?php } ?>
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back Admin!</h1>
                                     </div>
                                   
-                                    <form class="user" method="post" action="<?php echo getControllerUrl("loginTreatment","") ?>">
+                                    <form class="user" method="post" action="<?php echo getControllerUrlAdmin("loginTreatment","") ?>">
                                         <div class="form-group">
                                             <input type="text" name="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
