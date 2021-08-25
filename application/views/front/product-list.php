@@ -15,7 +15,7 @@
                                                 </li>
                                             <?php foreach($allCategory->result_array() as $row) { ?>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#"><?php echo $row['nomCateg']; ?></a>
+                                                    <a class="nav-link" href="#" onclick="getNom(<?php echo $row['nomCateg']; ?>)"><?php echo $row['nomCateg']; ?></a>
                                                 </li>
                                             <?php } ?>
                                         </ul>
@@ -72,6 +72,12 @@
                                             var testInt=parseInt(test);
                                             testInt=testInt+1;
                                             document.getElementById("qt"+id).value=testInt;
+                                        }   
+                                        function minus(id){
+                                            var test=document.getElementById("qt"+id).value;
+                                            var testInt=parseInt(test);
+                                            testInt=testInt-1;
+                                            document.getElementById("qt"+id).value=testInt;
                                         }    
                                     </script>
                                 </div>
@@ -125,13 +131,29 @@
                     </nav>
                 </div>
                 
-                
+               
                 
                 
                 
                 
             </div> -->
             <!-- Side Bar End -->
+            <script>
+            function getNom(nomCateg){
+                $.ajax({
+                    url : "<?php echo base_url(); ?>welcome/testAjax",
+                    type : "POST",
+                    dataType : "json",
+                    data : {"nomCateg" : nomCateg},
+                    success : function(data) {
+                        console.log(data);
+                    },
+                    error : function(data) {
+                        console.log(ovy);
+                    }
+                });
+            }
+            </script>
         </div>
     </div>
 </div>
