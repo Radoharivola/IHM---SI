@@ -111,7 +111,6 @@ insert into achat values(null,2,3,1,1,'2021-05-26');
 
 
 
-
 insert into categoryProduit values ('1','3');
 insert into categoryProduit values ('1','4');
 insert into categoryProduit values ('2','5');
