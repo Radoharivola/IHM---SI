@@ -100,16 +100,3 @@ insert into caisse values(null,'1');
 insert into caisse values(null,'2');
 insert into caisse values(null,'3');
 
-insert into achat values(null,2,1,1,1,'2021-05-05');
-insert into achat values(null,2,1,10,1,2021-05-05);
-insert into achat values(null,2,1,1,1,2021-05-05);
-insert into achat values(null,5,1,16,1,2021-06-05);
-insert into achat values(null,2,2,1,1,2021-05-05);
-insert into achat values(null,1,2,1,1,2021-05-02);
-insert into achat values(null,1,2,1,1,2021-05-03);
-insert into achat values(null,1,3,1,1,2021-05-03);
-insert into achat values(null,1,3,1,1,2021-05-12);
-insert into achat values(null,2,3,1,1,2021-05-25);
-insert into achat values(null,2,3,1,1,2021-06-26);
-insert into achat values(null,2,3,1,1,2021-06-26);
-insert into achat values(null,2,3,1,1,2021-05-26);
