@@ -54,18 +54,15 @@
                                         <img src="<?php echo base_url();?>/assets/frontAssets/img/<?php echo $row['imagePath'];?>" alt="Product Image">
                                     <!-- </a> -->
                                 </div>
-                                <div class="product-price">
+                                <div class="product-price" style="padding-left: 10px;padding-right: 10px;">
                                     <form method="post" action="<?php echo site_url("achat/insertAchat") ?>">
                                         <input type="hidden" name="idProd" value="<?php echo $row['idProduit']?>">
-                                        <h3><span>Ar</span> <?php echo $row['prix'];?></h3>
-                                        <div class="qty">
-                                            <a class="btn-plus" href="#!" onclick="add(<?php echo $row['idProduit']?>)"><i class="fa fa-plus"></i></a>
-                                            <br/>
-                                            <input type="number" id="qt<?php echo $row['idProduit']?>" min="1" name="qtty" value="1">
-                                            <br/>
-                                            <a class="btn-minus" href="#!" onclick="minus(<?php echo $row['idProduit']?>)"><i class="fa fa-minus"></i></a>
+                                        <!-- <h3><span>Ar</span> <?php echo $row['prix'];?></h3> -->
+                                        <div class="qty" style="float:left;">
+                                            <a style="background-color:white;padding:10px;border-radius:5px"class="btn-plus" href="#!" onclick="add(<?php echo $row['idProduit']?>)"><i class="fa fa-plus"></i></a>
+                                            <input style="width:30px;"type="number" id="qt<?php echo $row['idProduit']?>" min="1" name="qtty" value="1">
+                                            <a style="background-color:white;padding:10px;border-radius:5px" class="btn-minus" href="#!" onclick="minus(<?php echo $row['idProduit']?>)"><i class="fa fa-minus"></i></a>
                                         </div>
-                                        <br/>
                                         <input class="btn" type="submit" value="ajouter">
                                         <br/>
                                     </form>
