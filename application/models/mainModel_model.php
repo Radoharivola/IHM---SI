@@ -14,20 +14,25 @@ class mainModel_model extends CI_Model
     }
    
     public function updateProduct($idProduit,$productName,$price,$imageName){
-        $data=[
-            'nomProduit' => $productName,
-            'prix' =>$price,
-            'imagePath' =>$imageName,
-        ];
+        // $data=[
+        //     'nomProduit' => $productName,
+        //     'prix' =>$price,
+        //     'imagePath' =>$imageName,
+        // ];
+        $data['nomProduit']=$productName;
+        $data['prix']=$price;
+        $data['imagePath']=$imageName;
         $this->db->where('idProduit',$idProduit);
         $this->db->update('Produit',$data);
     }
 
     public function updateCategory($idCateg,$nomCateg){
-        $data=[
-            'nomCateg' => $nomCateg,
-            'idCateg' =>$idCateg,
-        ];
+        // $data=[
+        //     'nomCateg' => $nomCateg,
+        //     'idCateg' =>$idCateg,
+        // ];
+        $data['nomCateg']=$nomCateg;
+        $data['idCateg']=$idCateg;
         $this->db->where('idCateg',$idCateg);
         $this->db->update('Category',$data);
     }
@@ -60,33 +65,41 @@ class mainModel_model extends CI_Model
 
     public function insertProduit($nomProduit,$prix,$imagePath,$categData){
         $id=$this->getMaxIdProduit();
-        $data=[
-            'idProduit' => $id['idMax'],
-            'nomProduit' => $nomProduit,
-            'prix'=>$prix,
-            'imagePath'=>$imagePath
-        ];
+        // $data=[
+        //     'idProduit' => $id['idMax'],
+        //     'nomProduit' => $nomProduit,
+        //     'prix'=>$prix,
+        //     'imagePath'=>$imagePath
+        // ];
+        $data['idProduit']=$id['idMax'];
+        $data['nomProduit']=$nomProduit;
+        $data['prix']=$prix;
+        $data['imagePath']=$imagePath;
         $this->db->insert('Produit',$data);
         $this->insertCategProduit($id['idMax'],$categData);
     }
 
     public function insertCategory($nomCateg){
         $id=$this->getMaxIdCateg();
-        $data=[
-            'idCateg' => $id['idMax'],
-            'nomCateg' => $nomCateg,
+        // $data=[
+        //     'idCateg' => $id['idMax'],
+        //     'nomCateg' => $nomCateg,
            
-        ];
+        // ];
+        $data['idCateg']=$id['idMax'];
+        $data['nomCateg']=$nomCateg;
         $this->db->insert('Category',$data);
     }
 
     public function insertCategProduit($idProduit,$categData){
 
         foreach($categData as $value){
-            $data=[
-                'idCateg'=>$value,
-                'idProduit'=>$idProduit
-            ];
+            // $data=[
+            //     'idCateg'=>$value,
+            //     'idProduit'=>$idProduit
+            // ];
+            $data['idCateg']=$value;
+            $data['idProduit']=$idProduit;
             $this->db->insert('CategoryProduit',$data);
         }
     }
