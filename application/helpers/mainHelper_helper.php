@@ -4,7 +4,7 @@ allowed');
 
  if ( ! function_exists('imgUrl')) {
     function imgUrl($image) {
-        return base_url()+"assets/frontAssets/img/$image";
+        return base_url()."assets/frontAssets/img/$image";
     }
 }
 

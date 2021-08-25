@@ -23,10 +23,9 @@
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary"><?php echo $row['nomProduit'] ?> </h6>
                                         <h8 class="m-0 font-weight-bold text-primary"><?php echo $row['prix'] ?> </h8>
-
                                     </div>
                                     <div class="card-body" >
-                                       <img id="<?php echo $row['imagePath'] ?>" src="<?php echo $row['imagePath'] ?>">
+                                       <img src="<?php echo imgUrl($row['imagePath']); ?>">
                                            
                                         <div class="row">
                                             <div class="col-md-6">
