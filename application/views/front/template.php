@@ -55,7 +55,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Admin</a>
                                 <div class="dropdown-menu">
-                                    <a href="#!" class="dropdown-item">se Connecter</a>
+                                    <a href="<?php echo site_url('mainController/loginAdmin')?>" class="dropdown-item">se Connecter</a>
                                 </div>
                             </div>
                         </div>
