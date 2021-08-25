@@ -10,7 +10,6 @@
                                 <tr>
                                     <th>Product</th>
                                     <th>Price</th>
-                                    <th>Quantity</th>
                                     <th>Total</th>
                                     <th>Remove</th>
                                 </tr>
@@ -24,15 +23,11 @@
                                             </div>
                                         </td>
                                         <td><?php echo $achat[$i]->getPrix(); ?></td>
-                                        <td>
-                                            <div class="qty">
-                                                <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                <input type="text" value="<?php echo $achat[$i]->getQuantite(); ?>">
-                                                <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                            </div>
-                                        </td>
                                         <td><?php echo $achat[$i]->getMontant(); ?></td>
-                                        <td><button><i class="fa fa-trash"></i></button></td>
+                                        <form method="post" action="<?php echo site_url('achat/deleteAchat'); ?>">
+                                            <input type="hidden" name="idAchat" value="<?php echo $achat[$i]->idAchat; ?>" />
+                                            <td><button><i class="fa fa-trash"></i></button></td>
+                                        </form>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -44,20 +39,13 @@
                 <div class="cart-page-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- <div class="coupon">
-                                <input type="text" placeholder="Coupon Code">
-                                <button>Apply Code</button>
-                            </div> -->
-                        </div>
-                        <div class="col-md-12">
                             <div class="cart-summary">
                                 <div class="cart-content">
                                     <h1>Cart Summary</h1>
                                     <h2>Grand Total<span>Ar <?php echo $total; ?></span></h2>
                                 </div>
                                 <div class="cart-btn">
-                                    <button>Update Cart</button>
-                                    <button>Checkout</button>
+                                    <a href="<?php echo site_url('achat/valider') ?>"><button>Valider</button>
                                 </div>
                             </div>
                         </div>

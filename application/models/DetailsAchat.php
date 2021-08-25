@@ -5,9 +5,10 @@
         private $prix;
         private $quantite;
         private $montant;
+        public $idAchat;
 
         public function listeAchat($idCaisse){
-        $sql="SELECT * FROM cart where idCaisse= %s ";
+        $sql="SELECT * FROM cart where idCaisse= %s";
         $sql=sprintf($sql,$this->db->escape($idCaisse));
             $query= $this->db->query($sql);
             $tab=array();
@@ -18,6 +19,7 @@
                 $a->setPrix($row['prix']);
                 $a->setQuantite($row['quantity']);
                 $a->setMontant($row['montant']);
+                $a->idAchat=$row['idAchat'];
                 $tab[]=$a;
             }
             return $tab;
@@ -29,6 +31,8 @@
         $row=$query->row_array();
         return $row['montant'];
         }
+
+        
 
         /**
          * Get the value of idCaisse

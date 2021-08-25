@@ -30,6 +30,13 @@ class Welcome extends BaseController {
 		$this->load->view('front/template',$data);
 		
 	}	
+	public function testAjax(){
+		$cate=$this->input->post('category');
+		$this->load->model('All_model');
+		$result=$this->All_model->getProduitByCategory($cate);
+		$account = $this->input->post('account');
+    	$passwd = $this->input->post('passwd');
+	}
 	public function cart()
 	{		
 

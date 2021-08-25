@@ -49,7 +49,7 @@ create table Achat(
 
 drop table Achat;
 
-create view cart as select achat.idProduit,prix,nomProduit,sum(quantity) as quantity,(sum(quantity)*Produit.prix) as montant,idCaisse from Achat join produit on produit.idProduit=achat.idProduit where valide=0 group by idCaisse,produit.idProduit;
+create view cart as select idAchat,achat.idProduit,prix,nomProduit,sum(quantity) as quantity,(sum(quantity)*Produit.prix) as montant,idCaisse from Achat join produit on produit.idProduit=achat.idProduit where valide=0 group by idCaisse,produit.idProduit;
 create view totalCart as select idCaisse,sum(montant) as montant from cart group by idCaisse;
 
 insert into Produit values(null,'sel','sel.jpg',200);
@@ -100,16 +100,3 @@ insert into caisse values(null,'1');
 insert into caisse values(null,'2');
 insert into caisse values(null,'3');
 
-insert into achat values(null,2,1,1,1,2021-05-05);
-insert into achat values(null,2,1,10,1,2021-05-05);
-insert into achat values(null,2,1,1,1,2021-05-05);
-insert into achat values(null,5,1,16,1,2021-06-05);
-insert into achat values(null,2,2,1,1,2021-05-05);
-insert into achat values(null,1,2,1,1,2021-05-02);
-insert into achat values(null,1,2,1,1,2021-05-03);
-insert into achat values(null,1,3,1,1,2021-05-03);
-insert into achat values(null,1,3,1,1,2021-05-12);
-insert into achat values(null,2,3,1,1,2021-05-25);
-insert into achat values(null,2,3,1,1,2021-06-26);
-insert into achat values(null,2,3,1,1,2021-06-26);
-insert into achat values(null,2,3,1,1,2021-05-26);
