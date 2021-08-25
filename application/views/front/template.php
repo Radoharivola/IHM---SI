@@ -73,19 +73,15 @@
         
         
         <!-- Footer Bottom Start -->
-        <!-- <div class="footer-bottom">
+        <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 copyright">
-                        <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
-                    </div>
-
-                    <div class="col-md-6 template-by">
-                        <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                    <div class="col-md-12" style="color:red;">
+                        ETU1099 ETU1118
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- Footer Bottom End -->       
         
         <!-- Back to Top -->
