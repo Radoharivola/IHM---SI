@@ -205,10 +205,7 @@ function closeDelForm() {
     <input id="prix" type="text"   name="prix" required>
 
     <label ><b>Image</b></label>
-    
-
-    
-
+    <input id="img" type="file"   name="imagePath">
     </br>
     </br>
     <label ><b>Category</b></label>
