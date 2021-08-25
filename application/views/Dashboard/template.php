@@ -30,7 +30,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style=" background-color: #4e73df;" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -102,6 +102,14 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo getControllerUrl("manageProducts","") ?>">
+              
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Manage Products</span></a>
+            </li>
+           
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

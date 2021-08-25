@@ -53,7 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	if(! defined('ENVIRONMENT') ) define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
@@ -224,16 +224,16 @@ switch (ENVIRONMENT)
  * -------------------------------------------------------------------
  */
 	// The name of THIS file
-	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+	if(! defined('SELF') ) define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 
 	// Path to the system directory
-	define('BASEPATH', $system_path);
+	if(! defined('BASEPATH') )  define('BASEPATH', $system_path);
 
 	// Path to the front controller (this file) directory
-	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+	if(! defined('FCPATH') )  define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 
 	// Name of the "system" directory
-	define('SYSDIR', basename(BASEPATH));
+	if(! defined('SYSDIR') ) define('SYSDIR', basename(BASEPATH));
 
 	// The path to the "application" directory
 	if (is_dir($application_folder))
@@ -266,7 +266,7 @@ switch (ENVIRONMENT)
 		exit(3); // EXIT_CONFIG
 	}
 
-	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
+	if(! defined('APPPATH') ) define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
 
 	// The path to the "views" directory
 	if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
@@ -303,7 +303,7 @@ switch (ENVIRONMENT)
 		exit(3); // EXIT_CONFIG
 	}
 
-	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+	if(! defined('VIEWPATH') ) define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
 /*
  * --------------------------------------------------------------------

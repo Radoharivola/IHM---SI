@@ -42,6 +42,8 @@ create table Achat(
     idUser int not null,
     idCaisse int not null,
     quantity int not null,
+    dateAchat date,
+    valide varchar(5),
     foreign key(idProduit) references Produit(idProduit),
     foreign key(idUser) references User(idUser),
     foreign key(idCaisse) references Caisse(idCaisse)
@@ -72,3 +74,6 @@ insert into category values(null,'PPN');
 insert into caisse values(null,'1');
 insert into caisse values(null,'2');
 insert into caisse values(null,'3');
+
+
+insert into admin values('','Admin1','123');

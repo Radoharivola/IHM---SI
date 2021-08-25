@@ -94,15 +94,23 @@
                                     </h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="px-3 py-5 bg-gradient-primary text-white">.bg-gradient-primary</div>
-                                    <div class="px-3 py-5 bg-gradient-secondary text-white">.bg-gradient-secondary</div>
-                                    <div class="px-3 py-5 bg-gradient-success text-white">.bg-gradient-success</div>
-                                    <div class="px-3 py-5 bg-gradient-info text-white">.bg-gradient-info</div>
-                                    <div class="px-3 py-5 bg-gradient-warning text-white">.bg-gradient-warning</div>
-                                    <div class="px-3 py-5 bg-gradient-danger text-white">.bg-gradient-danger</div>
-                                    <div class="px-3 py-5 bg-gradient-light text-white">.bg-gradient-light</div>
-                                    <div class="px-3 py-5 bg-gradient-dark text-white">.bg-gradient-dark</div>
+                                    <div id="myDivID1" onclick="getColor('myDivID1')" style="background-color: #4e73df;" class="px-3 py-5 bg-gradient-primary text-white" >.bg-gradient-primary</div>
+                                    <div id="myDivID2" onclick="getColor('myDivID2')" style="background-color: #858796;" class="px-3 py-5 bg-gradient-secondary text-white">.bg-gradient-secondary</div> 
+                                    <div id="myDivID3" onclick="getColor('myDivID3')" style="background-color: #1cc88a;" class="px-3 py-5 bg-gradient-success text-white">.bg-gradient-success</div>     
+                                    <div id="myDivID4" onclick="getColor('myDivID4')" style="background-color: #36b9cc;" class="px-3 py-5 bg-gradient-info text-white">.bg-gradient-info</div>     
+                                    <div id="myDivID5" onclick="getColor('myDivID5')" style="background-color: #f6c23e;" class="px-3 py-5 bg-gradient-warning text-white">.bg-gradient-warning</div>     
+                                    <div id="myDivID6" onclick="getColor('myDivID6')" style=" background-color: #e74a3b;" class="px-3 py-5 bg-gradient-danger text-white">.bg-gradient-danger</div>    
+                                    <div id="myDivID7" onclick="getColor('myDivID7')" style=" background-color: #f8f9fc;" class="px-3 py-5 bg-gradient-light text-white">.bg-gradient-light</div>    
+                                    <div id="myDivID8" onclick="getColor('myDivID8')" style=" background-color: #5a5c69;" class="px-3 py-5 bg-gradient-dark text-white">.bg-gradient-dark</div>    
                                 </div>
+
+                                <script type="text/javascript">
+                                    function getColor(id) {
+                                        myDivObj = document.getElementById(id);
+                                        
+                                        document.getElementById("accordionSidebar").style.background=myDivObj.style.backgroundColor;
+                                    }
+                                </script>
                             </div>
 
                         </div>
@@ -135,7 +143,7 @@
                 </div>
                 <!-- /.container-fluid -->
 
-            </div>
+       
             <!-- End of Main Content -->
 
            

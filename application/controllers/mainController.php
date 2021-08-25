@@ -34,6 +34,21 @@ class mainController extends CI_Controller {
 		$this->load->view('Dashboard/template',$data);
 	}	
 
+	public function manageProducts()
+	{
+		$data=array();
+		$data["page"]="manageProducts";
+		$this->load->model('mainModel_model');
+		$query=$this->mainModel_model->getListeProduits();
+		$query2=$this->mainModel_model->getListeCategory();
+		$data['lProduits']=$query;
+		$data['lCategory']=$query2;
+		$this->load->helper('mainHelper_helper');
+		$this->load->view('Dashboard/template',$data);
+	}	
+
+	
+
 	public function loginAdmin()
 	{
 		$data=array();
@@ -48,4 +63,56 @@ class mainController extends CI_Controller {
 		$this->load->helper('mainHelper_helper');
 		$this->load->view('Dashboard/template',$data);
 	}	
+
+	public function loginTreatment()
+	{
+		$email=$_POST['email'];
+		$mdp=$_POST['mdp'];
+		$data=array();
+		$data["page"]="dashboard";
+		$this->load->model('mainModel_model');
+		$this->load->helper('mainHelper_helper');
+		$query=$this->mainModel_model->authentification($email,$mdp);
+		if($query['nom'] !=null and $query['passwd']!=null){
+			$this->load->view('Dashboard/template',$data);
+		}
+	}
+
+	public function updateTreatement(){
+		$idPro=$_POST['idProduit'];
+		$nomProduit=$_POST['nomProduit'];
+		$prix=$_POST['prix'];
+		$imageName=$_POST['img'];
+		$data["page"]="manageProducts";
+		$this->load->model('mainModel_model');
+		$this->load->helper('mainHelper_helper');
+		$this->mainModel_model->updateProduct($idPro,$nomProduit,$prix,$imageName);
+		$this->manageProducts();
+
+	}
+
+	public function deleteTreatement(){
+		$idPro=$_POST['idProduit'];
+		$data["page"]="manageProducts";
+		$this->load->model('mainModel_model');
+		$this->load->helper('mainHelper_helper');
+		$this->mainModel_model->deleteProduct($idPro);
+		$this->manageProducts();
+
+	}
+
+	public function insertProduct(){
+		$nomProduit=$_POST['nomProduit'];
+		$prix=$_POST['prix'];
+		$imagePath=$_POST['imagePath'];
+		$dataCateg=$_POST['category'];
+		var_dump($dataCateg);
+		$this->load->model('mainModel_model');
+		$this->load->helper('mainHelper_helper');
+		$this->mainModel_model->insertProduit($nomProduit,$prix,$imagePath,$dataCateg);
+		$this->manageProducts();
+	}
+
+
+
 }
