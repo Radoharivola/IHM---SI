@@ -106,6 +106,7 @@ insert into achat values(null,2,3,1,1,'2021-05-26');
 --  Stats  de vente par caisse 
 
 
+    select * from AchatProduitCaisse as APC,category,categoryProduit where category.idCateg=categoryProduit.idCateg and categoryProduit.idProduit=APC.idProduit;
 
 
 
