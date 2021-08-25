@@ -9,8 +9,13 @@
 
         public function insert(){
             $date='curdate()';
-            $req=("insert into achat (idCaisse,idProduit,quantity,dateAjout) VALUES ('$this->getIdCaisse()','$this->getIdProduit()','$this->getQuantite()',$date)");
-            $this->db->query($req);
+            // $req=("insert into achat (idCaisse,idProduit,quantity,dateAjout) VALUES ('$this->getIdCaisse()','$this->getIdProduit()','$this->getQuantite()',$date)");
+            // $this->db->query($req);
+            $data['idCaisse']=$this->getIdCaisse();
+            $data['idProduit']=$this->getIdProduit();
+            $data['quantity']=$this->getQuantite();
+            $data['dateAjout']=$date;
+            $this->db->insert('achat',$data);
         }
         public function delete($idAchat){
         $sql="DELETE FROM achat where idAchat= %s";
