@@ -22,11 +22,34 @@ class mainModel_model extends CI_Model
         $this->db->where('idProduit',$idProduit);
         $this->db->update('Produit',$data);
     }
+
+    public function updateCategory($idCateg,$nomCateg){
+        $data=[
+            'nomCateg' => $nomCateg,
+            'idCateg' =>$idCateg,
+        ];
+        $this->db->where('idCateg',$idCateg);
+        $this->db->update('Category',$data);
+    }
    
     public function deleteProduct($idProduct){
         $this->db->where('idProduit',$idProduct);
         $this->db->delete('Produit');
         $this->db->where('idProduit',$idProduct);
+        $this->db->delete('categoryProduit');
+    }
+
+    public function deleteCategory($idCateg){
+        $this->db->where('idCateg',$idCateg);
+        $this->db->delete('Category');
+        
+        $query= $this->db->query("SELECT idProduit FROM CategoryProduit where idCateg='$idCateg'")->result_array();
+        foreach($query as $row){
+            $this->db->where('idProduit',$row['idProduit']);
+            $this->db->delete('Produit');
+        }
+
+        $this->db->where('idCateg',$idCateg);
         $this->db->delete('categoryProduit');
     }
 
@@ -47,6 +70,16 @@ class mainModel_model extends CI_Model
         $this->insertCategProduit($id['idMax'],$categData);
     }
 
+    public function insertCategory($nomCateg){
+        $id=$this->getMaxIdCateg();
+        $data=[
+            'idCateg' => $id['idMax'],
+            'nomCateg' => $nomCateg,
+           
+        ];
+        $this->db->insert('Category',$data);
+    }
+
     public function insertCategProduit($idProduit,$categData){
 
         foreach($categData as $value){
@@ -60,6 +93,11 @@ class mainModel_model extends CI_Model
 
     public function getMaxIdProduit(){
         $query= $this->db->query("SELECT max(idProduit)+1 as idMax FROM Produit");
+        return $query->row_array();
+    }
+
+    public function getMaxIdCateg(){
+        $query= $this->db->query("SELECT max(idCateg)+1 as idMax FROM Category");
         return $query->row_array();
     }
 

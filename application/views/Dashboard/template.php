@@ -109,6 +109,13 @@
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Manage Products</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo getControllerUrl("manageCategory","") ?>">
+              
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Manage Category</span></a>
+            </li>
            
 
             <!-- Divider -->

@@ -47,7 +47,16 @@ class mainController extends CI_Controller {
 		$this->load->view('Dashboard/template',$data);
 	}	
 
-	
+	public function manageCategory()
+	{
+		$data=array();
+		$data["page"]="manageCategory";
+		$this->load->model('mainModel_model');
+		$query2=$this->mainModel_model->getListeCategory();
+		$data['lCategory']=$query2;
+		$this->load->helper('mainHelper_helper');
+		$this->load->view('Dashboard/template',$data);
+	}	
 
 	public function loginAdmin()
 	{
@@ -91,6 +100,17 @@ class mainController extends CI_Controller {
 
 	}
 
+	public function updateTreatementCateg(){
+		$idCateg=$_POST['idCateg'];
+		$nomCateg=$_POST['nomCateg'];
+		$data["page"]="manageCategory";
+		$this->load->model('mainModel_model');
+		$this->load->helper('mainHelper_helper');
+		$this->mainModel_model->updateCategory($idCateg,$nomCateg);
+		$this->manageCategory();
+
+	}
+
 	public function deleteTreatement(){
 		$idPro=$_POST['idProduit'];
 		$data["page"]="manageProducts";
@@ -98,6 +118,16 @@ class mainController extends CI_Controller {
 		$this->load->helper('mainHelper_helper');
 		$this->mainModel_model->deleteProduct($idPro);
 		$this->manageProducts();
+
+	}
+
+	public function deleteTreatementCateg(){
+		$idCateg=$_POST['idCateg'];
+		$data["page"]="manageCategory";
+		$this->load->model('mainModel_model');
+		$this->load->helper('mainHelper_helper');
+		$this->mainModel_model->deleteCategory($idCateg);
+		$this->manageCategory();
 
 	}
 
@@ -112,6 +142,18 @@ class mainController extends CI_Controller {
 		$this->mainModel_model->insertProduit($nomProduit,$prix,$imagePath,$dataCateg);
 		$this->manageProducts();
 	}
+
+	public function insertCategory(){
+		$nomCateg=$_POST['nomCateg'];
+		$this->load->model('mainModel_model');
+		$this->load->helper('mainHelper_helper');
+		$this->mainModel_model->insertCategory($nomCateg);
+		$this->manageCategory();
+	}
+
+
+
+
 
 
 
